@@ -1,0 +1,70 @@
+{% extends "base.html.twig" %}
+
+{% block title %} Manga Detail {% endblock %}
+
+
+{% block body %}
+    <style>
+        .detail {
+            width:40%;
+            margin: 10px auto;
+            background-color: rgb(235, 233, 231);
+            display:flex;
+        }
+
+        .infor {
+            width:492px;
+        }
+
+        .infor-title {
+            font-weight:500;
+            font-size: 30px;
+            
+            color:tomato;
+        }
+
+        .infor-item {
+            margin-left: 98px;
+            margin-top:20px;
+        }
+
+        .infor-item a {
+            text-decoration:none;
+        }
+
+        .table {
+            margin: 10px;
+        }
+    </style>
+    <div class = "detail">
+        <div><img src = "{{asset('Images/tablet/' ~ tablet.image)}}" width = "200px"></div>
+        <div class = "infor">
+            <div class ="infor-title" style="text-align:center;"> {{ tablet.name }} </div>
+            <table class = "table">
+                <tr>
+                    <th> Date </th>
+                    <td scope="row"> {{ tablet.Date | date("d/m/Y") }} </td>
+                </tr>
+                <tr>
+                    <th> Genre </th>
+                    <td scope="row">
+                        <a href="{{ path ('brand_detail', {'id' : tablet.brand.id} ) }} "> 
+                                           {{ tablet.brand.name }} 
+                        </a>
+                    </td>
+                </tr>
+            </table>
+ 
+            <div class ="infor-item"> 
+                <a class="btn btn-warning" href="{{ path ('tablet_update', {'id' : tablet.id} )}}">Update</a>
+                <a class="btn btn-danger" href="{{ path ('tablet_delete', {'id' : tablet.id} )}}"  
+                        onclick = "return confirm ('Are you sure to delete ?')" >      
+                Delete</a>
+                <br></br>
+            </div>
+
+
+
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,33 @@
+{% extends "base.html.twig" %}
+
+{% block title %} Tablet List {% endblock %}
+
+{% block body %}
+<style>
+    body {
+        width: 80%;
+        margin: 20px auto;
+    }
+</style>
+             <a class="btn btn-outline-success" href="{{ path ('tablet_create') }}">CREATE NEW Phone</a>
+             <br></br>
+        <table >
+            <tr scope="col">
+                {% for tablet in tablets %} 
+                {% if tablet.image == null %}
+                   <td scope="row" >  <img src="{{ asset ('images/tablet/tablet.jpg')}}" width="100px" height="100px"> </td>
+                {% else %}               
+                    <td scope="row" > <img src="{{ asset ('images/tablet/' ~ tablet.image)}}" width="200px" height="310px">.                   .</td>
+                {% endif %}     
+                {% endfor %}
+
+            </tr>
+            <tr >
+                {% for tablet in tablets %}
+  
+                        <td scope="row" style="text-align: center;"> <a class="btn btn-warning" href="{{ path ('tablet_detail', {'id' : tablet.id} )}}">{{ tablet.Name}}</a> </td>
+                {% endfor %}
+            </tr>
+        </table>
+
+{% endblock %}

@@ -1,0 +1,79 @@
+{% extends "base.html.twig" %}
+
+{% block title %} Phone Detail {% endblock %}
+
+
+{% block body %}
+    <style>
+        .detail {
+            width:40%;
+            margin: 10px auto;
+            background-color: rgb(235, 233, 231);
+            display:flex;
+        }
+
+        .infor {
+            width:492px;
+        }
+
+        .infor-title {
+            font-weight:500;
+            font-size: 30px;
+            
+            color:tomato;
+        }
+
+        .infor-item {
+            margin-left: 98px;
+            margin-top:20px;
+        }
+
+        .infor-item a {
+            text-decoration:none;
+        }
+
+        .table {
+            margin: 10px;
+        }
+    </style>
+    <div class = "detail">
+        <div><img src = "{{asset('Images/phone/' ~ phone.image)}}" width = "200px"></div>
+        <div class = "infor">
+            <div class ="infor-title" style="text-align:center;"> {{ phone.name }} </div>
+            <table class = "table">
+                <tr>
+                    <th> description </th>
+                    <td> {{ phone.Description }} </td>
+                </tr>
+                <tr>
+                <tr>
+                    <th> Price </th>
+                    <td> {{ phone.Price }}$ </td>
+                </tr>
+                <tr>
+                    <th> Date </th>
+                    <td scope="row"> {{ phone.Date | date("d/m/Y") }} </td>
+                </tr>
+                <tr>
+                    <th> Brand </th>
+                    <td scope="row">
+                        <a href="{{ path ('brand_detail', {'id' : phone.brand.id} ) }} "> 
+                                           {{ phone.brand.name }} 
+                        </a>
+                    </td>
+                </tr>
+            </table>
+ 
+            <div class ="infor-item"> 
+                <a class="btn btn-warning" href="{{ path ('phone_update', {'id' : phone.id} )}}">Update</a>
+                <a class="btn btn-danger" href="{{ path ('phone_delete', {'id' : phone.id} )}}"  
+                        onclick = "return confirm ('Are you sure to delete ?')" >      
+                Delete</a>
+                <br></br>
+            </div>
+
+
+
+        </div>
+    </div>
+{% endblock %}

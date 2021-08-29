@@ -1,0 +1,30 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+<div class="container">
+    <h2 class="mt-5 mb-5 text-center text-success"> Update Tablet </h2>
+    <div class="col-md-6 offset-md-3"></div>
+    {{ form_start (form) }}
+        <div class="form-group">
+            <h6 class="text-primary"> Tablet Name </h6>
+            {{ form_widget (form.Name, {'attr' : {'class' : 'form-control'}}) }}
+        </div>
+
+        <div class="form-group mt-2">
+            <h6 class="text-primary"> Tablet Image </h6>
+            {{ form_widget (form.Image, {'attr' : {'class' : 'form-control'}}) }}
+        </div>
+                <div class="form-group mt-2">
+            <h6 class="text-primary"> Tablet  Date </h6>
+            {{ form_widget (form.Date, {'attr' : {'class' : 'form-control'}}) }}
+        </div>
+        <div class="form-group mt-2">
+            <h6 class="text-primary"> Tablet Brand </h6>
+            {{ form_widget (form.Brand, {'attr' : {'class' : 'form-control'}}) }}
+        </div>
+        <div class="form-group text-center mt-5">
+            <button class="btn btn-info mt-2">CREATE</button>
+        </div>
+    {{ form_end (form) }}
+</div>
+{% endblock %}

@@ -1,0 +1,33 @@
+{% extends "base.html.twig" %}
+
+{% block title %} Phone List {% endblock %}
+
+{% block body %}
+<style>
+    body {
+        width: 80%;
+        margin: 20px auto;
+    }
+</style>
+             <a class="btn btn-outline-success" href="{{ path ('phone_create') }}">CREATE NEW Phone</a>
+             <br></br>
+        <table >
+            <tr scope="col">
+                {% for phone in phones %} 
+                {% if phone.image == null %}
+                   <td scope="row" >  <img src="{{ asset ('images/phone/phone.jpg')}}" width="100px" height="100px"> </td>
+                {% else %}               
+                    <td scope="row" > <img src="{{ asset ('images/phone/' ~ phone.image)}}" width="200px" height="310px">.                   .</td>
+                {% endif %}     
+                {% endfor %}
+
+            </tr>
+            <tr >
+                {% for phone in phones %}
+  
+                        <td scope="row" style="text-align: center;"> <a class="btn btn-warning" href="{{ path ('phone_detail', {'id' : phone.id} )}}">{{ phone.Name}}</a> </td>
+                {% endfor %}
+            </tr>
+        </table>
+
+{% endblock %}
